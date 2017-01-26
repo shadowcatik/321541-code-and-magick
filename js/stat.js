@@ -1,73 +1,67 @@
 'use strict';
 
-var canvas = document.querySelector('canvas');
-
 function cloud(ctx) {
+  ctx.save();
   ctx.beginPath();
-  ctx.fillStyle='#ffffff';
-  ctx.moveTo(100, 10);
+  ctx.fillStyle = '#ffffff';
+  ctx.moveTo(100, 30);
   ctx.bezierCurveTo(50, 10, 50, 100, 100, 100);
-  ctx.bezierCurveTo(50, 100, 50, 180, 100, 180);
-  ctx.bezierCurveTo(100, 200, 160, 230, 160, 180);
-  ctx.bezierCurveTo(200, 250, 250, 180, 250, 170);
-  ctx.bezierCurveTo(275, 150, 300, 270, 380, 160);
-  ctx.bezierCurveTo(420, 70, 370, 50, 370, 40);
+  ctx.bezierCurveTo(50, 100, 50, 200, 90, 180);
+  ctx.bezierCurveTo(10, 340, 220, 300, 200, 270);
+  ctx.bezierCurveTo(200, 280, 300, 250, 250, 250);
+  ctx.bezierCurveTo(275, 250, 300, 300, 350, 270);
+  ctx.bezierCurveTo(350, 260, 400, 250, 450, 160);
+  ctx.bezierCurveTo(450, 100, 470, 80, 400, 40);
   ctx.bezierCurveTo(370, 10, 310, 10, 310, 40);
   ctx.bezierCurveTo(310, 10, 270, 20, 270, 50);
   ctx.bezierCurveTo(260, 10, 200, 10, 200, 50);
   ctx.bezierCurveTo(200, 10, 150, 10, 150, 10);
   ctx.stroke();
   ctx.closePath();
-  ctx.fill();
-}
-
-window.renderStatistics = function(ctx, names, times) {
-  ctx.shadowColor = "rgba(0, 0, 0, 0.7)";
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
   ctx.shadowOffsetX = 10;
   ctx.shadowOffsetY = 10;
+  ctx.fill();
+  ctx.restore();
+}
+
+window.renderStatistics = function (ctx, names, times) {
   cloud(ctx);
-
   ctx.font = '16px PT Mono';
-  ctx.textBaseline = 'hanging';
-  ctx.fillText('Ура вы победили!', 60, 30);
-  ctx.fillText('Список результатов:', 60, 50);
+  ctx.fillText('Ура вы победили!', 70, 50);
+  ctx.fillText('Список результатов:', 70, 65);
 
-  var histoHeight = 150,
-      histoWidth = 0,
-      colWidth =  40,
-      colMargin = 50,
-      max = 1,
-      min = Infinity;
+  var histoHeight = 150;
+  var histoWidth = 0;
+  var colWidth = 40;
+  var colMargin = 50;
+  var max = 1;
 
+  for (var a = 0; a < times.length; a++) {
+    var maxTime = times[a];
+
+    if (maxTime > max) {
+      max = maxTime;
+    }
+  }
+  var newArray = [];
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
-    var name = names[i];
-
-    if(time > max) {
-      max = time;
-    }
-    else if (time < min) {
-      min = time;
-    }
-
-    var newArray = [];
     var prop = time / max * histoHeight;
     newArray.push(prop);
+  }
+  for (var j = 0; j < times.length; j++) {
+    var name = names[j];
 
     if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'rgba(0, 0, 255, Math.floor((Math.random() * 50) + 5)';
+      ctx.fillStyle = 'rgba(0, 0, ' + Math.floor((Math.random() * 255) + 5) + ', ' + Math.floor((Math.random() * 2) + 1) + ')';
     }
 
     histoWidth += colMargin + colWidth;
-    ctx.fillRect(histoWidth, histoHeight, colWidth, newArray[i]);
-    ctx.fillText(name, histoWidth, histoHeight);
+    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -newArray[j]);
+    ctx.fillText(name, histoWidth, histoHeight + 90);
+    ctx.fillText(Math.floor(time), histoWidth, histoHeight - newArray[j] + 77);
   }
-}
-
-renderStatistics(
-  canvas.getContext('2d'),
-  ['Вы', 'Кекс', 'Катя', 'Игорь'],
-  [2000, 5000, 2555, 2111]
-);
+};
