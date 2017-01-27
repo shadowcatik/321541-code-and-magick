@@ -36,19 +36,23 @@ window.renderStatistics = function (ctx, names, times) {
   var colWidth = 40;
   var colMargin = 50;
   var max = 1;
-  var heightArray = [];
 
   for (var a = 0; a < times.length; a++) {
-    var time = times[a];
+    var maxTime = times[a];
 
-    if (time > max) {
-      max = time;
+    if (maxTime > max) {
+      max = maxTime;
     }
-    var prop = time / max * histoHeight;
+  }
+  var heightArray = [];
+  for (var i = 0; i < times.length; i++) {
+    var prop = times[i] / max * histoHeight;
     heightArray.push(prop);
   }
   for (var j = 0; j < times.length; j++) {
     var name = names[j];
+    var time = times[j];
+
 
     if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
