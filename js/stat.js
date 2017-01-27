@@ -48,7 +48,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var j = 0; j < times.length; j++) {
     var name = names[j];
     var time = times[j];
-    var hight = time / max * histoHeight;
+    var height = time / max * histoHeight;
 
     if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
@@ -57,8 +57,8 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     histoWidth += colMargin + colWidth;
-    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -hight);
+    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -height);
     ctx.fillText(name, histoWidth, histoHeight + 90);
-    ctx.fillText(Math.floor(time), histoWidth, histoHeight - hight + 77);
+    ctx.fillText(Math.floor(time), histoWidth, histoHeight - height + 77);
   }
 };
