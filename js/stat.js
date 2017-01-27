@@ -36,19 +36,16 @@ window.renderStatistics = function (ctx, names, times) {
   var colWidth = 40;
   var colMargin = 50;
   var max = 1;
+  var heightArray = [];
 
   for (var a = 0; a < times.length; a++) {
-    var maxTime = times[a];
+    var time = times[a];
 
-    if (maxTime > max) {
-      max = maxTime;
+    if (time > max) {
+      max = time;
     }
-  }
-  var newArray = [];
-  for (var i = 0; i < times.length; i++) {
-    var time = times[i];
     var prop = time / max * histoHeight;
-    newArray.push(prop);
+    heightArray.push(prop);
   }
   for (var j = 0; j < times.length; j++) {
     var name = names[j];
@@ -60,8 +57,8 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     histoWidth += colMargin + colWidth;
-    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -newArray[j]);
+    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -heightArray[j]);
     ctx.fillText(name, histoWidth, histoHeight + 90);
-    ctx.fillText(Math.floor(time), histoWidth, histoHeight - newArray[j] + 77);
+    ctx.fillText(Math.floor(time), histoWidth, histoHeight - heightArray[j] + 77);
   }
 };
