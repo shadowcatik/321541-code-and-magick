@@ -44,15 +44,11 @@ window.renderStatistics = function (ctx, names, times) {
       max = maxTime;
     }
   }
-  var heightArray = [];
-  for (var i = 0; i < times.length; i++) {
-    var prop = times[i] / max * histoHeight;
-    heightArray.push(prop);
-  }
+
   for (var j = 0; j < times.length; j++) {
     var name = names[j];
     var time = times[j];
-
+    var hight = times[j] / max * histoHeight;
 
     if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
@@ -61,8 +57,8 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     histoWidth += colMargin + colWidth;
-    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -heightArray[j]);
+    ctx.fillRect(histoWidth, histoHeight + 80, colWidth, -hight);
     ctx.fillText(name, histoWidth, histoHeight + 90);
-    ctx.fillText(Math.floor(time), histoWidth, histoHeight - heightArray[j] + 77);
+    ctx.fillText(Math.floor(time), histoWidth, histoHeight - hight + 77);
   }
 };
