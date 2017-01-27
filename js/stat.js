@@ -48,7 +48,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var j = 0; j < times.length; j++) {
     var name = names[j];
     var time = times[j];
-    var hight = times[j] / max * histoHeight;
+    var hight = time / max * histoHeight;
 
     if (name === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
