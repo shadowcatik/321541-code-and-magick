@@ -1,23 +1,14 @@
+'use strict';
+
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
-
-
-setupOpen.addEventListener('click', function() {
-  setup.classList.remove('invisible');
-});
-
 var setupClose = document.querySelector('.setup-close');
-
-setupClose.addEventListener('click', function() {
-  setup.classList.add('invisible');
-});
-
+var wizardCoat = document.querySelector('#wizard-coat');
 var setupUserName = document.querySelector('.setup-user-name');
+var wizardEyes = document.querySelector('#wizard-eyes');
+var fireballWrap = document.querySelector('.setup-fireball-wrap');
 
-setupUserName.required = true;
-setupUserName.maxLength = 50;
-
-var wizardCoat = wizard.querySelector('#wizard-coat');
+var color;
 var coatColor = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
@@ -26,14 +17,6 @@ var coatColor = [
   'rgb(215, 210, 55)',
   'rgb(0, 0, 0)'
 ];
-var color;
-
-wizardCoat.addEventListener('click', function() {
-  color = Math.floor(Math.random() * coatColor.length);
-  wizardCoat.style.fill = coatColor[color];
-});
-
-var wizardEyes = document.querySelector('#wizard-eyes');
 var eyesColor = [
   'black',
   'red',
@@ -41,13 +24,6 @@ var eyesColor = [
   'yellow',
   'green'
 ];
-
-wizardEyes.addEventListener('click', function() {
-  color = Math.floor(Math.random() * eyesColor.length);
-  wizardEyes.style.fill = eyesColor[color];
-});
-
-var fireballWrap = document.querySelector('.setup-fireball-wrap');
 var fireballColor = [
   '#ee4830',
   '#30a8ee',
@@ -56,7 +32,33 @@ var fireballColor = [
   '#e6e848'
 ];
 
-fireballWrap.addEventListener('click', function() {
-  color = Math.floor(Math.random() * fireballColor.length);
+setupOpen.addEventListener('click', function () {
+  setup.classList.remove('invisible');
+});
+
+setupClose.addEventListener('click', function () {
+  setup.classList.add('invisible');
+});
+
+setupUserName.required = true;
+setupUserName.maxLength = 50;
+
+function randomNumber(max) {
+  return Math.floor(Math.random() * max, 0);
+}
+
+wizardCoat.addEventListener('click', function () {
+  color = randomNumber(coatColor.length);
+  wizardCoat.style.fill = coatColor[color];
+});
+
+wizardEyes.addEventListener('click', function () {
+  color = randomNumber(eyesColor.length);
+  wizardEyes.style.fill = eyesColor[color];
+});
+
+fireballWrap.addEventListener('click', function () {
+  color = randomNumber(fireballColor.length);
   fireballWrap.style.background = fireballColor[color];
 });
+
