@@ -3,9 +3,9 @@
 var setupOpen = document.querySelector('.setup-open');
 var setup = document.querySelector('.setup');
 var setupClose = document.querySelector('.setup-close');
-var wizardCoat = document.querySelector('#wizard-coat');
+var wizardCoat = document.getElementById('wizard-coat');
 var setupUserName = document.querySelector('.setup-user-name');
-var wizardEyes = document.querySelector('#wizard-eyes');
+var wizardEyes = document.getElementById('wizard-eyes');
 var fireballWrap = document.querySelector('.setup-fireball-wrap');
 
 var color;
