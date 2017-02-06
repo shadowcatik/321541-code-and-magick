@@ -7,6 +7,10 @@ var wizardCoat = document.getElementById('wizard-coat');
 var setupUserName = document.querySelector('.setup-user-name');
 var wizardEyes = document.getElementById('wizard-eyes');
 var fireballWrap = document.querySelector('.setup-fireball-wrap');
+var setupSubmit = document.querySelector('setup-submit');
+
+var ENTER_KEY_CODE = 13;
+var ESCAPE_KEY_CODE = 27;
 
 var color;
 var coatColor = [
@@ -62,3 +66,25 @@ fireballWrap.addEventListener('click', function () {
   fireballWrap.style.background = fireballColor[color];
 });
 
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEY_CODE) {
+    setup.classList.remove('invisible');
+    document.addEventListener('keydown', function (ev) {
+      if (ev.keyCode === ESCAPE_KEY_CODE) {
+        setup.classList.add('invisible');
+      }
+    });
+    setupSubmit.addEventListener('keydown', function (event) {
+      setup.classList.add('invisible');
+      if (event.keyCode === ENTER_KEY_CODE) {
+        setup.classList.add('invisible');
+      }
+    });
+  }
+});
+
+setupClose.addEventListener('keydown', function (e) {
+  if (e.keyCode === ENTER_KEY_CODE) {
+    setup.classList.add('invisible');
+  }
+});
