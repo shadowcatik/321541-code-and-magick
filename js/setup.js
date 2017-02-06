@@ -7,7 +7,7 @@ var wizardCoat = document.getElementById('wizard-coat');
 var setupUserName = document.querySelector('.setup-user-name');
 var wizardEyes = document.getElementById('wizard-eyes');
 var fireballWrap = document.querySelector('.setup-fireball-wrap');
-var setupSubmit = document.querySelector('setup-submit');
+var setupSubmit = document.querySelector('.setup-submit');
 
 var ENTER_KEY_CODE = 13;
 var ESCAPE_KEY_CODE = 27;
