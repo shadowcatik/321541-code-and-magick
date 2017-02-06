@@ -69,15 +69,19 @@ fireballWrap.addEventListener('click', function () {
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     setup.classList.remove('invisible');
+    setup.setAttribute('aria-hidden', false);
     document.addEventListener('keydown', function (ev) {
       if (ev.keyCode === ESCAPE_KEY_CODE) {
         setup.classList.add('invisible');
+        setup.setAttribute('aria-hidden', true);
       }
     });
     setupSubmit.addEventListener('keydown', function (event) {
       setup.classList.add('invisible');
+      setup.setAttribute('aria-hidden', true);
       if (event.keyCode === ENTER_KEY_CODE) {
         setup.classList.add('invisible');
+        setup.setAttribute('aria-hidden', true);
       }
     });
   }
