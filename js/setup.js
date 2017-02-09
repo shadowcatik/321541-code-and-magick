@@ -39,15 +39,8 @@ var fireballColor = [
 setupOpen.addEventListener('click', function () {
   setup.classList.remove('invisible');
 });
-setupOpen.removeEventListener('click', function () {
-  setup.classList.remove('invisible');
-});
 
 setupClose.addEventListener('click', function () {
-  setup.classList.add('invisible');
-});
-
-setupClose.removeEventListener('click', function () {
   setup.classList.add('invisible');
 });
 
@@ -63,17 +56,7 @@ wizardCoat.addEventListener('click', function () {
   wizardCoat.style.fill = coatColor[color];
 });
 
-wizardCoat.removeEventListener('click', function () {
-  color = randomNumber(coatColor.length);
-  wizardCoat.style.fill = coatColor[color];
-});
-
 wizardEyes.addEventListener('click', function () {
-  color = randomNumber(eyesColor.length);
-  wizardEyes.style.fill = eyesColor[color];
-});
-
-wizardEyes.removeEventListener('click', function () {
   color = randomNumber(eyesColor.length);
   wizardEyes.style.fill = eyesColor[color];
 });
@@ -83,7 +66,7 @@ fireballWrap.addEventListener('click', function () {
   fireballWrap.style.background = fireballColor[color];
 });
 
-setupOpen.addEventListener('keydown', function (evt) {
+function setupOpenFunction (evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     setup.classList.remove('invisible');
     setup.setAttribute('aria-hidden', false);
@@ -102,36 +85,18 @@ setupOpen.addEventListener('keydown', function (evt) {
       }
     });
   }
-});
-setupOpen.removeEventListener('keydown', function (evt) {
-  if (evt.keyCode === ENTER_KEY_CODE) {
-    setup.classList.remove('invisible');
-    setup.setAttribute('aria-hidden', false);
-    document.addEventListener('keydown', function (ev) {
-      if (ev.keyCode === ESCAPE_KEY_CODE) {
-        setup.classList.add('invisible');
-        setup.setAttribute('aria-hidden', true);
-      }
-    });
-    setupSubmit.addEventListener('keydown', function (event) {
-      setup.classList.add('invisible');
-      setup.setAttribute('aria-hidden', true);
-      if (event.keyCode === ENTER_KEY_CODE) {
-        setup.classList.add('invisible');
-        setup.setAttribute('aria-hidden', true);
-      }
-    });
-  }
-});
+}
 
-setupClose.addEventListener('keydown', function (e) {
+setupOpen.addEventListener('keydown', setupOpenFunction (evt));
+
+setupOpen.removeEventListener('keydown', setupOpenFunction (evt));
+
+function setupCloseFunction (e) {
   if (e.keyCode === ENTER_KEY_CODE) {
     setup.classList.add('invisible');
   }
-});
+}
 
-setupClose.removeEventListener('keydown', function (e) {
-  if (e.keyCode === ENTER_KEY_CODE) {
-    setup.classList.add('invisible');
-  }
-});
+setupClose.addEventListener('keydown', setupCloseFunction (e));
+
+setupClose.removeEventListener('keydown', setupCloseFunction (e));
