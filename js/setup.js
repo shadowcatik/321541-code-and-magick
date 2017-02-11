@@ -87,9 +87,9 @@ function setupOpenFunction (evt) {
   }
 }
 
-setupOpen.addEventListener('keydown', setupOpenFunction (evt));
+setupOpen.addEventListener('keydown', setupOpenFunction);
 
-setupOpen.removeEventListener('keydown', setupOpenFunction (evt));
+setupOpen.removeEventListener('keydown', setupOpenFunction);
 
 function setupCloseFunction (e) {
   if (e.keyCode === ENTER_KEY_CODE) {
@@ -97,6 +97,4 @@ function setupCloseFunction (e) {
   }
 }
 
-setupClose.addEventListener('keydown', setupCloseFunction (e));
-
-setupClose.removeEventListener('keydown', setupCloseFunction (e));
+setupClose.addEventListener('keydown', setupCloseFunction);
