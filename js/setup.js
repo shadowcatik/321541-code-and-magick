@@ -66,7 +66,7 @@ fireballWrap.addEventListener('click', function () {
   fireballWrap.style.background = fireballColor[color];
 });
 
-function setupOpenFunction (evt) {
+function setupOpenFunction(evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     setup.classList.remove('invisible');
     setup.setAttribute('aria-hidden', false);
@@ -91,7 +91,7 @@ setupOpen.addEventListener('keydown', setupOpenFunction);
 
 setupOpen.removeEventListener('keydown', setupOpenFunction);
 
-function setupCloseFunction (e) {
+function setupCloseFunction(e) {
   if (e.keyCode === ENTER_KEY_CODE) {
     setup.classList.add('invisible');
   }
