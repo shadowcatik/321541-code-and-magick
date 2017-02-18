@@ -38,11 +38,11 @@ var fireballColor = [
 
 setupOpen.addEventListener('click', function () {
   openSetup();
+  document.removeEventListener('keydown', escapeKeydown);
 });
 
 setupClose.addEventListener('click', function () {
   setup.classList.add('invisible');
-  setupOpen.removeEventListener('keydown', escapeKeydown);
 });
 
 setupUserName.required = true;
