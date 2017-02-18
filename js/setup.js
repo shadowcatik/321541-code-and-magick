@@ -42,7 +42,7 @@ setupOpen.addEventListener('click', function () {
 
 setupClose.addEventListener('click', function () {
   setup.classList.add('invisible');
-  setupOpen.removeEventListener('keydown', setupOpenFunction);
+  setupOpen.removeEventListener('keydown', escapeKeydown);
 });
 
 setupUserName.required = true;
@@ -67,23 +67,23 @@ fireballWrap.addEventListener('click', function () {
   fireballWrap.style.background = fireballColor[color];
 });
 
+function escapeKeydown(ev) {
+  if (ev.keyCode === ESCAPE_KEY_CODE) {
+    setup.classList.add('invisible');
+    setup.setAttribute('aria-hidden', true);
+  }
+}
+
 function openSetup() {
   setup.classList.remove('invisible');
   setup.setAttribute('aria-hidden', false);
-  document.addEventListener('keydown', function (ev) {
-    if (ev.keyCode === ESCAPE_KEY_CODE) {
-      setup.classList.add('invisible');
-      setup.setAttribute('aria-hidden', true);
-    }
-  });
+  document.addEventListener('keydown', escapeKeydown);
 }
 
 function setupOpenFunction(evt) {
   if (evt.keyCode === ENTER_KEY_CODE) {
     openSetup();
     setupSubmit.addEventListener('keydown', function (event) {
-      setup.classList.add('invisible');
-      setup.setAttribute('aria-hidden', true);
       if (event.keyCode === ENTER_KEY_CODE) {
         setup.classList.add('invisible');
         setup.setAttribute('aria-hidden', true);
