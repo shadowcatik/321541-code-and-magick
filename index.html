@@ -21,13 +21,13 @@
       Вместе с ним вас ждет увлекательное приключение&hellip;
     </p>
     <div class="demo"></div>
-    <div class="setup-open">
-      <img src="./img/user-1.jpg" class="setup-open-icon">
+    <div class="setup-open" >
+      <img src="./img/user-1.jpg" class="setup-open-icon" role='button' tabindex="0" aria-pressed='false'>
     </div>
   </header>
-  <div class="overlay setup invisible">
+  <div class="overlay setup invisible" role='dialog' aria-hidden='true'>
     <form class="setup-wizard-form">
-      <span class="setup-close">&times;</span>
+      <span class="setup-close" role='button' tabindex="0" aria-pressed='true'>&times;</span>
       <div class="setup-user">
         <img class="setup-user-pic" src="./img/user-1.jpg" />
         <input type="text" class="setup-user-name" value="Синий Пендальф" />
