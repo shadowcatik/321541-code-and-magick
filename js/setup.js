@@ -46,26 +46,7 @@ setupClose.addEventListener('click', function () {
 
 setupUserName.required = true;
 setupUserName.maxLength = 50;
-/*
-function randomNumber(max) {
-  return Math.floor(Math.random() * max, 0);
-}
 
-wizardCoat.addEventListener('click', function () {
-  color = randomNumber(coatColor.length);
-  wizardCoat.style.fill = coatColor[color];
-});
-
-wizardEyes.addEventListener('click', function () {
-  color = randomNumber(eyesColor.length);
-  wizardEyes.style.fill = eyesColor[color];
-});
-
-fireballWrap.addEventListener('click', function () {
-  color = randomNumber(fireballColor.length);
-  fireballWrap.style.background = fireballColor[color];
-});
-*/
 function escapeKeydown(ev) {
   if (ev.keyCode === ESCAPE_KEY_CODE) {
     setup.classList.add('invisible');
@@ -100,7 +81,6 @@ function setupCloseFunction(e) {
 }
 
 setupClose.addEventListener('keydown', setupCloseFunction);
-
 
 window.colorizeElement(wizardCoat, coatColor, 'fill');
 window.colorizeElement(wizardEyes, eyesColor, 'fill');
