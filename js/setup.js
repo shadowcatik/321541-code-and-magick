@@ -12,7 +12,6 @@ var setupSubmit = document.querySelector('.setup-submit');
 var ENTER_KEY_CODE = 13;
 var ESCAPE_KEY_CODE = 27;
 
-var color;
 var coatColor = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
@@ -47,7 +46,7 @@ setupClose.addEventListener('click', function () {
 
 setupUserName.required = true;
 setupUserName.maxLength = 50;
-
+/*
 function randomNumber(max) {
   return Math.floor(Math.random() * max, 0);
 }
@@ -66,7 +65,7 @@ fireballWrap.addEventListener('click', function () {
   color = randomNumber(fireballColor.length);
   fireballWrap.style.background = fireballColor[color];
 });
-
+*/
 function escapeKeydown(ev) {
   if (ev.keyCode === ESCAPE_KEY_CODE) {
     setup.classList.add('invisible');
@@ -101,3 +100,8 @@ function setupCloseFunction(e) {
 }
 
 setupClose.addEventListener('keydown', setupCloseFunction);
+
+
+window.colorizeElement(wizardCoat, coatColor, 'fill');
+window.colorizeElement(wizardEyes, eyesColor, 'fill');
+window.colorizeElement(fireballWrap, fireballColor, 'background');
