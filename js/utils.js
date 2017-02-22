@@ -1,6 +1,6 @@
 'use strict';
 
-window.utils = function () {
+window.utils = (function () {
   function getRandomElement(arr) {
     var randomElement = Math.floor(Math.random() * arr.length);
     return arr[randomElement];
@@ -13,5 +13,8 @@ window.utils = function () {
     }
     return newElement;
   }
-  return {getRandomElementExcept: getRandomElementExcept};
-}();
+  return {
+    getRandomElement: getRandomElement,
+    getRandomElementExcept: getRandomElementExcept
+  };
+})();
