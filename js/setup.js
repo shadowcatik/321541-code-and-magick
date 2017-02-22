@@ -83,7 +83,7 @@
 
   setupClose.addEventListener('keydown', setupCloseFunction);
 
-  window.colorizeElement(wizardCoat, coatColor, 'fill');
-  window.colorizeElement(wizardEyes, eyesColor, 'fill');
-  window.colorizeElement(fireballWrap, fireballColor, 'background');
+  window.colorize(wizardCoat, coatColor, 'fill');
+  window.colorize(wizardEyes, eyesColor, 'fill');
+  window.colorize(fireballWrap, fireballColor, 'background');
 })();
