@@ -91,15 +91,15 @@
 
   setupClose.addEventListener('keydown', setupCloseFunction);
 
-  var fillElement = function(element, color) {
+  var fillElement = function (element, color) {
     element.style.fill = color;
   };
 
-  var changeElementBackground = function(element, color) {
+  var changeElementBackground = function (element, color) {
     element.style.backgroundColor = color;
   };
 
   window.colorize(wizardCoat, coatColor, fillElement);
   window.colorize(wizardEyes, eyesColor, fillElement);
-  window.colorize(fireballWrap, fireballColor, changeElementBackground );
+  window.colorize(fireballWrap, fireballColor, changeElementBackground);
 })();
