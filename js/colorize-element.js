@@ -1,18 +1,18 @@
 'use strict';
 
 window.colorize = (function () {
-  function colorizeElement(element, colors, property) {
-    var color;
+  function colorizeElement(element, colors, callback) {
+    var randomColor;
     var ENTER_KEY_CODE = 13;
 
     function colorElement() {
-      if (typeof element.style[property] === 'undefined') {
-        color = colors[0];
+      if (typeof element.style.color === 'undefined') {
+        randomColor = colors[0];
       } else {
-        color = element.style[property];
+        randomColor = element.style.color;
       }
-      var getRandom = window.utils.getRandomElementExcept(colors, color);
-      element.style[property] = getRandom;
+      var getRandom = window.utils.getRandomElementExcept(colors, randomColor);
+      callback(element, getRandom);
     }
 
     element.addEventListener('click', function () {
