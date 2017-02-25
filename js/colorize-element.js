@@ -9,10 +9,9 @@ window.colorize = (function () {
       if (typeof element.style.color === 'undefined') {
         randomColor = colors[0];
       } else {
-        randomColor = element.style.color;
+        randomColor = window.utils.getRandomElementExcept(colors, randomColor);
       }
-      var getRandom = window.utils.getRandomElementExcept(colors, randomColor);
-      callback(element, getRandom);
+      callback(element, randomColor);
     }
 
     element.addEventListener('click', function () {
