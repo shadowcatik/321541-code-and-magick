@@ -1,6 +1,6 @@
 'use strict';
 
-(function () {
+window.setup = (function () {
   var setupOpen = document.querySelector('.setup-open');
   var setup = document.querySelector('.setup');
   var setupClose = document.querySelector('.setup-close');
@@ -48,10 +48,6 @@
 
   setupClose.addEventListener('click', function () {
     setup.classList.add('invisible');
-
-    if (typeof onSetupClose === 'function') {
-      onSetupClose();
-    }
   });
 
   function escapeKeydown(ev) {
@@ -68,10 +64,16 @@
     onSetupClose = callback;
   }
 
+  var setupFocus = function () {
+    setupOpen.focus();
+  };
+
   function setupOpenFunction(evt) {
     if (evt.keyCode === ENTER_KEY_CODE) {
       openSetup();
-      setup.focus();
+      if (typeof onSetupClose === 'function') {
+        onSetupClose();
+      }
       setupSubmit.addEventListener('keydown', function (event) {
         if (event.keyCode === ENTER_KEY_CODE) {
           setup.classList.add('invisible');
@@ -86,6 +88,7 @@
   function setupCloseFunction(e) {
     if (e.keyCode === ENTER_KEY_CODE) {
       setup.classList.add('invisible');
+      openSetup(setupFocus);
     }
   }
 
